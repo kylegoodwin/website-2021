@@ -1,0 +1,19 @@
+[
+    {
+        "title": "Google",
+        "url": "https://google.com",
+        "subject": "Google",
+        "publication": "Search"
+    },
+    {
+        "title": "Facebook",
+        "url": "https://facebook.com",
+        "subject": "Facebook",
+        "publication": "Social"
+    },
+    {
+        "title": "Kyle Goodwin",
+        "url": "https://kyle-goodwin.com",
+        "subject": "Kyle",
+        "publication": "Developer"
+    }]
