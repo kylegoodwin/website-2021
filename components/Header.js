@@ -7,24 +7,34 @@ function Header(props) {
   return (
     <>
       <Head>
-      <title>Title{props.section && `: ${props.section}`}</title>
-      <meta name="description" content={props.description ? props.description : "Title"}></meta>
-      <meta name="robots" content="index, follow"></meta>
+        <title>Kyle Goodwin{props.section && `: ${props.section}`}</title>
+        <meta name="description" content={props.description ? props.description : "Title"}></meta>
+        <meta name="robots" content="index, follow"></meta>
       </Head>
       <HeaderContainer>
-        <Link href="/work"><a>One</a></Link>
-        <Link href="/"><h1>Title</h1></Link>
-        <Link href="/about"><a>Two</a></Link>
+        <Link href="/"><h1>Kyle Goodwin</h1></Link>
       </HeaderContainer>
+      <Warning>I am still building this site right now (March 2021)</Warning>
     </>
   )
 }
 
+const Warning = styled.span`
+display: block;
+width: 100%;
+background-color: #1c527a;
+color: white;
+text-align: center;
+padding: 5px;
+font-family: 'Brygada 1918'
+
+`
+
 const HeaderContainer = styled.div`
-  width: 100vw;
+  box-sizing: border-box;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  padding-left: 2em;
 
   a{
     text-decoration: none;
@@ -34,9 +44,7 @@ const HeaderContainer = styled.div`
   }
 
   h1 {
-    font-family: poynter-oldstyle-display, serif;
-    font-weight: 700;
-    font-style: normal;
+    font-family: 'Brygada 1918'
   }
 
 `

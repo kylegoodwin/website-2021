@@ -1,7 +1,19 @@
+@font-face {
+    font-family: 'Brygada 1918';
+    src: url("/fonts/Brygada_1918/Brygada1918-Medium.ttf");
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+  }
+
 body,html{
     margin: 0;
     padding: 0;
-    font-family: poynter-oldstyle-display, serif; 
-    color: #2a528a;
+    font-family: Arial, Helvetica, sans-serif; 
+    color: #1c527a;
     
+}
+
+h2{
+    font-family: 'Brygada 1918';
 }
