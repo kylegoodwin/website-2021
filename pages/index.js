@@ -130,7 +130,7 @@ display: flex;
     margin: 2em;
     flex: 1 1 0;
     height: auto;
-    background-image: url("/home.jpg");
+    background-image: url("/images/photo-00002.jpg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
