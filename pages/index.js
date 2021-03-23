@@ -11,7 +11,6 @@ export async function getStaticProps(context) {
     const vertical = await new Promise((resolve, reject) => {
         return fs.readdir('public/images', (err, files) => {
             if(err != null) reject(err)
-            console.log(files)
             resolve(files.filter( each => {
                 return each !== '.DS_Store'
             }).map(each => {return `${each}`}))
@@ -39,11 +38,7 @@ export default function Index({vertical,horizontal}) {
                 <div className="text">
                     <div>
                         <h2>{"Developer & Photographer"}</h2>
-                        <p>Im Kyle, a developer and photographer from the northwest, currently based in New York City.
-                        I stIdied informatics at the University of Washington,
-                        and have focused my work around the intersection of software and public health.
-                        Off the computer I spend most of my time outdoors. I love cycling, skateboarding, 
-                        backpacking, and exploring the backcountry on a snowboard.</p>
+                        <p>Hello! I am Kyle, a developer and photographer from currently based in New York City. I grew up in Seattle, and stayed through college, where I studied informatics at the University of Washington. My professional work has focused on the intersection of software and public health. I have been practicing photography from a young age, and enjoy documenting my hobbies, and using photography as a medium for cultural criticism.</p>
                     </div>
                 </div>
                 <div className="landing-image">
@@ -95,7 +90,7 @@ justify-content: center;
 img{
     width: 40%;
     object-fit: contain;
-    margin: 0 37px; 
+    margin: 0 2em; 
 }
 
     img:nth-of-type(1){
@@ -105,6 +100,19 @@ img{
 img:nth-of-type(2){
     margin-bottom: 75px;
 }
+
+&:nth-of-type(even){
+    img:nth-of-type(1){
+        transform: translateX(-2vw);
+    }
+}
+
+&:nth-of-type(odd){
+    img:nth-of-type(2){
+        transform: translateX(2vw);
+    }
+}
+
 
 `
 
@@ -130,7 +138,7 @@ display: flex;
     margin: 2em;
     flex: 1 1 0;
     height: auto;
-    background-image: url("/images/photo-00002.jpg");
+    background-image: url("/home.jpg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;

@@ -1,7 +1,8 @@
 module.exports = {
     exportPathMap: function () {
         return {
-            '/': { page: '/' }
+            '/': { page: '/' },
+            '/contact': {page: '/contact'}
             // '/about': { page: '/about' },
             // '/work': { page: '/work' },
         };

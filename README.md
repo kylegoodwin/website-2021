@@ -4,12 +4,12 @@ Feel free to copy it if anyone actually cares 🤷‍♂️
 
 TODO:
 - [x] Add photos
-- [] Work section
-- [] Contact
-- [] Cleanup code
-- [] Favicon
-- [] Improve SEO
-- [] Animation: Cycle through wide photos on landing top section
+- [ ] Work section
+- [ ] Contact
+- [ ] Cleanup code
+- [ ] Favicon
+- [ ] Improve SEO
+- [ ] Animation: Cycle through wide photos on landing top section
 
 ## Exporting
 Development Mode
