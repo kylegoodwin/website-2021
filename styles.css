@@ -6,6 +6,14 @@
     font-display: swap;
   }
 
+  @font-face{
+      font-family: 'Source Sans Pro';
+      src: url("/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf");
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+  }
+
 body,html{
     margin: 0;
     padding: 0;

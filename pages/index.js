@@ -38,7 +38,7 @@ export default function Index({vertical,horizontal}) {
                 <div className="text">
                     <div>
                         <h2>{"Developer & Photographer"}</h2>
-                        <p>Hello! I am Kyle, a developer and photographer from currently based in New York City. I grew up in Seattle, and stayed through college, where I studied informatics at the University of Washington. My professional work has focused on the intersection of software and public health. I have been practicing photography from a young age, and enjoy documenting my hobbies, and using photography as a medium for cultural criticism.</p>
+                        <p className="">Hello! I am Kyle, a developer and photographer from currently based in New York City. I grew up in Seattle, and stayed through college, where I studied Informatics at the University of Washington. My professional work has focused on the intersection of software and public health. I have been practicing photography from a young age, and enjoy documenting my hobbies, and using photography as a medium for cultural criticism.</p>
                     </div>
                 </div>
                 <div className="landing-image">
@@ -46,7 +46,7 @@ export default function Index({vertical,horizontal}) {
 
             </Home>
             <Section>
-                <h2>Recent Photography</h2>
+                <h2>Photos for you to enjoy</h2>
                 <Photos fileNames={vertical} />
             </Section>
         </>
@@ -125,6 +125,8 @@ const Home = styled.div`
 min-height: 90vh;
 display: flex;
 
+
+
 .text{
     flex-basis: 33%;
     padding: 2em;
@@ -132,6 +134,10 @@ display: flex;
     h2{
         font-size: 1.5em;
     }
+
+    p{
+    font-family: "Source Sans Pro";
+}
 }
 
 .landing-image{

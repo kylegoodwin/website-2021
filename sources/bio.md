@@ -1,1 +1,0 @@
-Hello! I made this preconfigured NextJS starter because I thought it was helpful! I hope someone else will find it.
