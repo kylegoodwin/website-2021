@@ -10,19 +10,19 @@ export async function getStaticProps(context) {
 
     const vertical = await new Promise((resolve, reject) => {
         return fs.readdir('public/images', (err, files) => {
-            if(err != null) reject(err)
-            resolve(files.filter( each => {
+            if (err != null) reject(err)
+            resolve(files.filter(each => {
                 return each !== '.DS_Store'
-            }).map(each => {return `${each}`}))
+            }).map(each => { return `${each}` }))
         })
     })
 
     return {
-        props: {vertical: vertical}, // will be passed to the page component as props
+        props: { vertical: vertical }, // will be passed to the page component as props
     }
 }
 
-export default function Index({vertical,horizontal}) {
+export default function Index({ vertical, horizontal }) {
 
     const [ref, percentage] = useScrollPercentage({
         /* Optional options */
@@ -38,7 +38,7 @@ export default function Index({vertical,horizontal}) {
                 <div className="text">
                     <div>
                         <h2>{"Developer & Photographer"}</h2>
-                        <p className="">Hello! I am Kyle, a developer and photographer from currently based in New York City. I grew up in Seattle, and stayed through college, where I studied Informatics at the University of Washington. My professional work has focused on the intersection of software and public health. I have been practicing photography from a young age, and enjoy documenting my hobbies, and using photography as a medium for cultural criticism.</p>
+                        <p className="">Hello! I am Kyle, a developer and photographer from currently based in New York City. I grew up in Seattle, and stayed through college, where I studied Informatics at the University of Washington. My professional work has focused on the intersection of software and public health. I have practiced photography from a young age, and enjoy documenting my hobbies and travels.</p>
                     </div>
                 </div>
                 <div className="landing-image">
@@ -46,28 +46,28 @@ export default function Index({vertical,horizontal}) {
 
             </Home>
             <Section>
-                <h2>Photos for you to enjoy</h2>
+                <h2>Recent Photos</h2>
                 <Photos fileNames={vertical} />
             </Section>
         </>
     );
 }
 
-const Photos = ({fileNames}) => {
+const Photos = ({ fileNames }) => {
 
 
     let elements = []
 
-    for(let i=0; i < fileNames.length; i+=2){
+    for (let i = 0; i < fileNames.length; i += 2) {
         elements.push(<GalleryImage >
-        <img src={`/images/${fileNames[i]}`} />
-        {fileNames[i + 1] && <img src={`/images/${fileNames[i + 1]}`} />}
+            <img src={`/images/${fileNames[i]}`} />
+            {fileNames[i + 1] && <img src={`/images/${fileNames[i + 1]}`} />}
         </GalleryImage>)
     }
 
-    return(
+    return (
         <Gallery>
-            { elements}
+            {elements}
         </Gallery>
     )
 }
@@ -112,7 +112,6 @@ img:nth-of-type(2){
         transform: translateX(2vw);
     }
 }
-
 
 `
 
