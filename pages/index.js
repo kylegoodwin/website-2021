@@ -35,24 +35,23 @@ export default function Index({ vertical, horizontal }) {
         <>
             <Header />
             <Container>
-            <Home>
-                <div className="text">
-                    <div>
-                        <h2>{"Developer & Photographer"}</h2>
-                        <p className="">Hello! I am Kyle, a developer and photographer from currently based in New York City.
-                            I grew up in Seattle, and stayed through college, where I studied Informatics at the University of Washington.
-                            My professional work has focused on the intersection of software and public health.
-                            I have practiced photography from a young age, and enjoy documenting my hobbies and travels.</p>
+                <Home>
+                    <div className="text">
+                        <div>
+                            <h2>{"Developer & Photographer"}</h2>
+                            <p className="">Hello! I am Kyle, a developer and photographer from currently based in New York City.
+                                I grew up in Seattle, and stayed through college, where I studied Informatics at the University of Washington.
+                                My professional work has focused on the intersection of software and public health.
+                                I have practiced photography from a young age, and enjoy documenting my hobbies and travels.</p>
+                        </div>
                     </div>
-                </div>
-                <div className="landing-image">
-                </div>
-
-            </Home>
-            <Section>
-                <h2>Recent Photos</h2>
-                <Photos fileNames={vertical} />
-            </Section>
+                    <div className="landing-image">
+                    </div>
+                </Home>
+                <Section>
+                    <h2>Recent Photos</h2>
+                    <Photos fileNames={vertical} />
+                </Section>
             </Container>
         </>
     );
@@ -64,8 +63,8 @@ const Photos = ({ fileNames }) => {
 
     for (let i = 0; i < fileNames.length; i += 1) {
         elements.push(<div>
-            {i % 2 === 1 && <div className='spacer' />}
-             <img src={`/images/${fileNames[i]}`} />
+            {i % 2 === 1 && <div className='odd-spacer' />}
+            <img src={`/images/${fileNames[i]}`} />
         </div>)
     }
 
@@ -88,13 +87,16 @@ display: grid;
 grid-template-columns: auto auto;
 grid-column-gap: 4rem;
 
-.spacer{
+.odd-spacer{
     height: 50px;
 }
 
 @media (max-width: 500px) {
+    padding: 0;
     grid-template-columns: 100%;
-    .spacer{
+    grid-row-gap: 1rem;
+
+    .odd-spacer{
         height: 0;
     }
 
@@ -108,17 +110,19 @@ div img{
 
 `
 
-
 const Section = styled.section`
+padding: 2rem 0; 
 
-padding: 2em 0; 
+
+@media (max-width: 500px) {
+   padding: 1rem 0;
+}
+
 `
 
 const Home = styled.div`
 min-height: 90vh;
 display: flex;
-
-
 
 .text{
     flex-basis: 33%;
@@ -164,6 +168,19 @@ div > img{
   }
 
 
+
+
+@media (max-width: 500px){
+    padding-top: 2rem;
+    flex-direction: column-reverse;
+    .text{
+        padding: 0;
+        flex-basis: unset;
+    }
+    .landing-image{
+        margin: 0;
+        flex-grow: 1;
+    }
+}
+
 `
-
-
