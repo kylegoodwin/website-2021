@@ -1,8 +1,29 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 import { useScrollPercentage } from 'react-scroll-percentage'
 import Header from '../components/Header'
 import { fadeIn } from '../utility/Animations'
 import fs from 'fs'
+import { useEffect, useRef, useState } from 'react'
+
+const useIntersectionObserver = (ref, options) => {
+    const [isIntersecting, setIsIntersecting] = React.useState(false);
+
+    React.useEffect(() => {
+        const observer = new IntersectionObserver(([entry]) => {
+            setIsIntersecting(entry.isIntersecting);
+        }, options);
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => {
+            observer.unobserve(ref.current);
+        };
+    }, []);
+
+    return isIntersecting;
+};
 
 export async function getStaticProps(context) {
 
@@ -57,14 +78,32 @@ export default function Index({ vertical, horizontal }) {
     );
 }
 
+const LazyImage = ({ src }) => {
+
+    const [shown, setShown] = useState(false);
+    const ref = useRef();
+    const onScreen = useIntersectionObserver(ref, { threshold: 0 });
+
+    useEffect(() => {
+        if (onScreen) {
+            setShown(true);
+        }
+    }, [onScreen])
+
+
+    return (
+        <AnimatedImage shown={shown} ref={ref} src={src} />
+    )
+}
+
 const Photos = ({ fileNames }) => {
 
     let elements = []
 
     for (let i = 0; i < fileNames.length; i += 1) {
-        elements.push(<div>
+        elements.push(<div  key={`home-image-${i}`}>
             {i % 2 === 1 && <div className='odd-spacer' />}
-            <img src={`/images/${fileNames[i]}`} />
+            <LazyImage src={`/images/${fileNames[i]}`} />
         </div>)
     }
 
@@ -74,6 +113,28 @@ const Photos = ({ fileNames }) => {
         </Gallery>
     )
 }
+
+const Animation = keyframes`
+    from {
+        transform: translate(-10px,-10px);
+        opacity: 10%;
+    }
+    to {
+        opacity: 100%;
+        transform: translate(0px,0px);
+    }
+`;
+
+
+const AnimatedImage = styled.img`
+opacity: 10%;
+
+${({ shown }) => shown && css`
+    animation: ${Animation} 1s ease-in-out forwards;
+`}
+
+
+`
 
 const Container = styled.div`
 padding: 0 2rem;
@@ -88,7 +149,7 @@ grid-template-columns: auto auto;
 grid-column-gap: 4rem;
 
 .odd-spacer{
-    height: 50px;
+    height: 100px;
 }
 
 @media (max-width: 500px) {
