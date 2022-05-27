@@ -34,11 +34,15 @@ export default function Index({ vertical, horizontal }) {
     return (
         <>
             <Header />
+            <Container>
             <Home>
                 <div className="text">
                     <div>
                         <h2>{"Developer & Photographer"}</h2>
-                        <p className="">Hello! I am Kyle, a developer and photographer from currently based in New York City. I grew up in Seattle, and stayed through college, where I studied Informatics at the University of Washington. My professional work has focused on the intersection of software and public health. I have practiced photography from a young age, and enjoy documenting my hobbies and travels.</p>
+                        <p className="">Hello! I am Kyle, a developer and photographer from currently based in New York City.
+                            I grew up in Seattle, and stayed through college, where I studied Informatics at the University of Washington.
+                            My professional work has focused on the intersection of software and public health.
+                            I have practiced photography from a young age, and enjoy documenting my hobbies and travels.</p>
                     </div>
                 </div>
                 <div className="landing-image">
@@ -49,20 +53,20 @@ export default function Index({ vertical, horizontal }) {
                 <h2>Recent Photos</h2>
                 <Photos fileNames={vertical} />
             </Section>
+            </Container>
         </>
     );
 }
 
 const Photos = ({ fileNames }) => {
 
-
     let elements = []
 
-    for (let i = 0; i < fileNames.length; i += 2) {
-        elements.push(<GalleryImage >
-            <img src={`/images/${fileNames[i]}`} />
-            {fileNames[i + 1] && <img src={`/images/${fileNames[i + 1]}`} />}
-        </GalleryImage>)
+    for (let i = 0; i < fileNames.length; i += 1) {
+        elements.push(<div>
+            {i % 2 === 1 && <div className='spacer' />}
+             <img src={`/images/${fileNames[i]}`} />
+        </div>)
     }
 
     return (
@@ -72,52 +76,42 @@ const Photos = ({ fileNames }) => {
     )
 }
 
+const Container = styled.div`
+padding: 0 2rem;
+`
+
 const Gallery = styled.div`
-width: auto;
-display: flex;
-flex-wrap: wrap;
-
-`
-
-const GalleryImage = styled.div`
-width: 100%;
-
 box-sizing: border-box;
+padding: 4rem;
+width: 100%;
+display: grid;
+grid-template-columns: auto auto;
+grid-column-gap: 4rem;
 
-display: flex;
-justify-content: center;
-
-img{
-    width: 40%;
-    object-fit: contain;
-    margin: 0 2em; 
+.spacer{
+    height: 50px;
 }
 
-    img:nth-of-type(1){
-    margin-top: 75px;
-}
-
-img:nth-of-type(2){
-    margin-bottom: 75px;
-}
-
-&:nth-of-type(even){
-    img:nth-of-type(1){
-        transform: translateX(-2vw);
+@media (max-width: 500px) {
+    grid-template-columns: 100%;
+    .spacer{
+        height: 0;
     }
+
 }
 
-&:nth-of-type(odd){
-    img:nth-of-type(2){
-        transform: translateX(2vw);
-    }
+div img{
+    width: 100%;
+    border-radius: 2px;
 }
+
 
 `
+
 
 const Section = styled.section`
 
-padding: 2em; 
+padding: 2em 0; 
 `
 
 const Home = styled.div`

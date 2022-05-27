@@ -14,13 +14,11 @@ function Header(props) {
       </Head>
       <HeaderContainer>
         <Link href="/"><h1>Kyle Goodwin</h1></Link>
-
         <Link href="/work"><RightLink>Software Projects</RightLink></Link>
-
         <a href="https://github.com/kylegoodwin"><AiFillGithub size="1.5em" /></a>
         <a href="https://instagram.com/kylegoodwn"><AiFillInstagram size="1.5em"/></a>
       </HeaderContainer>
-      <Warning>I am still building this site right now (March 2022)</Warning>
+      <Warning>I am still building this site right now (May 2022)</Warning>
     </>
   )
 }

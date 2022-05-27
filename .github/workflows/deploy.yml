@@ -42,7 +42,7 @@ jobs:
     - run: npm run export
     - uses: netlify/actions/cli@master
       with:
-          args: deploy --dir=out
+          args: deploy --dir=out --prod
       env:
         NETLIFY_SITE_ID: ${{ secrets.SITE_ID }}
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_KEY }}
